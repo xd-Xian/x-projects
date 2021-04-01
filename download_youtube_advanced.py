@@ -62,6 +62,16 @@ def toggle_modal(add_task, confirm, cancel, is_open):
 
 
 @app.callback(
+    [Output('link', 'value'), Output('path', 'value')],
+    [Input('add_task', 'n_clicks'), Input('clear', 'n_clicks'), Input('cancel', 'n_clicks')]
+)
+def clear_input(add_task, clear, cancel):
+    if not add_task or not clear and not cancel:
+        raise dash.exceptions.PreventUpdate
+    return None, None
+    
+
+@app.callback(
     Output('confirm', 'disabled'),
     [Input('link', 'value'), Input('path', 'value')]
 )
@@ -70,16 +80,6 @@ def valid_confirm(link, path):
         return False
     else:
         return True
-
-
-@app.callback(
-    [Output('link', 'value'), Output('path', 'value')],
-    [Input('clear', 'n_clicks'), Input('cancel', 'n_clicks')]
-)
-def clear_input(clear, cancel):
-    if not clear and not cancel:
-        raise dash.exceptions.PreventUpdate
-    return None, None
 
 
 @app.callback(
