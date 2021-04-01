@@ -34,13 +34,8 @@ def serve_layout():
 
         dcc.ConfirmDialog(
             id='dupe_confirm',
-            message="Item is already in your task! Are you sure you want to download again?",  
+            message="Item is already in your task list! Are you sure you want to download again?",  
         ),
-
-        #dcc.ConfirmDialog(
-        #    id='final_confirm',
-        #    message="Start downloading",  
-        #),
 
         dcc.Store(id='links', data=[]),
         dcc.Store(id='paths', data=[]),
@@ -67,7 +62,7 @@ def toggle_modal(add_task, confirm, cancel, is_open):
 )
 def clear_input(add_task, clear, cancel):
     return None, None
-    
+
 
 @app.callback(
     Output('confirm', 'disabled'),
