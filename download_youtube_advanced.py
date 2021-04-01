@@ -66,8 +66,6 @@ def toggle_modal(add_task, confirm, cancel, is_open):
     [Input('add_task', 'n_clicks'), Input('clear', 'n_clicks'), Input('cancel', 'n_clicks')]
 )
 def clear_input(add_task, clear, cancel):
-    if not add_task or not clear and not cancel:
-        raise dash.exceptions.PreventUpdate
     return None, None
     
 
